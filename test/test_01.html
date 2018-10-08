@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--1. 插件js文件的引用-->
+    <script type="text/javascript" src="../plug/jquery-3.3.1.js"></script>
+
+    <style>
+        .select-x{
+            width: 80px;
+            height:40px;
+            border: 1px solid red;
+            text-align: center;
+            line-height: 40px;
+            margin: 3px;
+            padding: 3px;
+            padding-top: 3px;
+            font-weight: bold;
+            position: absolute;
+        }
+
+        .select-y{
+            width: 100px;
+            height:50px;
+            border: 1px solid red;
+            text-align: left;
+            line-height: 40px;
+            padding-top: 3px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <ol>
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+    </ol>
+
+    <ul>
+        <li>Coffee</li>
+        <li>Tea</li>
+        <li>Milk</li>
+    </ul>
+
+    <p class="a">1234</p>
+    <p class="a">4567</p>
+    <p class="a">7890</p>
+
+
+    <button style="margin: 60px">
+        提交
+    </button>
+
+    <div style="margin: 20px auto;height: 200px;width: 300px; border: 1px solid red;text-align: center;line-height: 20px;">
+        <span>元素：</span> <p id="ID2">段落名称</p>
+        <span>输入框：</span><br/>
+        <input type="text" name="number" value="1234" placeholder="请输入" id="ID"><br/>
+        <button id="but1">获取</button>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="../scripts/test.js"></script>
+<script>
+    $(document).ready(function () {
+        //console.log("取value值:"+$("#ID").val()); //取value值
+        //console.log("赋值:"+$("#ID").val("xxx")); //赋值
+        console.log("相当于取innerText:"+$("#ID2").text()); //相当于取innerText
+        console.log("相当于赋值给innerText:"+$("#ID2").text("")); //相当于赋值给innerText
+        //console.log("相当于取innerHTML:"+$("#ID").html()); //相当于取innerHTML
+        ///console.log("相当于赋值给innerHTML:"+$("#ID").html("")); //相当于赋值给innerHTML
+
+        //1. 判断一个元素是否存在
+        if($(".a").length > 0) {
+            //元素存在时执行的代码
+            console.log("存在:"+$(".a").length);
+        }else {
+            console.log("不存在");
+        }
+
+        //2. js定义一个对象，添加值，张三：39，李四：28，王五：21,取出李四，打印年龄，然后删除王五
+        var obj={"张三":39,"李四":28,王五:21};
+        console.log(obj);
+        console.log(obj.李四);
+        delete obj.王五
+        console.log(obj);
+
+
+
+        $("#but1").click(function () {
+            console.log($("input[name=number]").val());
+            $("#ID").attr("readonly",true);//取得或设置匹配元素的属性值
+            //两种方法设置disabled属性
+            $('#ID').attr("disabled",true);
+            $('#ID').attr("disabled","disabled");
+            //$('#ID').attr("disabled",true);
+            //三种方法移除disabled属性
+            $('#ID').attr("disabled",false);
+            $('#ID').removeAttr("disabled");
+            $('#ID').attr("disabled","");
+
+            //设置一个样式属性的值
+            $("#ID").css("height","100px");
+            $("#ID").css("width","100px");
+
+            $("#ID").hide(); //隐藏
+            $("#ID").show(); //显示
+
+
+        });
+    });
+</script>
+
+</body>
+</html>

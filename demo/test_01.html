@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bootstrapDialog</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" type="text/css">
+
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" type="text/css">
+
+    <!-- jQuery文件，务必在bootstrap.min.js 之前引入 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- bootstrap-dialog.min.css 样式引入-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/css/bootstrap-dialog.min.css" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+        h5 {
+            text-align: left;
+            color: red;
+        }
+    </style>
+
+</head>
+
+<body>
+<!-- bootstrap-dialog.min.js 插件引入-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.5/js/bootstrap-dialog.min.js"></script>
+
+
+<div class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <p>One fine body…</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script>
+    // BootstrapDialog 弹框操作
+
+    BootstrapDialog.show({
+        //操作表单，前后台交互
+        title: '财务开票',
+        message: "<h5>【开票条件】经理通过且坏账不超过3%、或者坏账超过3%总经理通过。</h5><br/> <input class=\"form-control\" name=\"name\" id=\"name\" type=\"text\"> ",
+        // onhide 关闭窗口之前触发事件
+        onhide: function(dialog){
+            var fruit = dialog.getModalBody().find('input[name="name"]').val();
+            if($.trim(fruit.toLowerCase()) !== 'ok') {
+                alert('no ok');
+                //特定的业务阻止去关闭对话框
+                return false;
+            }
+        },
+        buttons: [{
+            label: '确定',
+            action: function(dialog) {
+                var fruit = dialog.getModalBody().find('input').val();
+                console.log("input:"+fruit);
+                dialog.close();
+            }
+            },
+            {
+            label: '关闭',
+            action: function(dialog) {
+                //对于对话框内部的实例对象的引用
+                dialog.close();
+            }
+        }]
+    });
+
+</script>
+</body>
+</html>

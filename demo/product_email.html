@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>产品邮件发送</title>
+</head>
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" type="text/css">
+<body>
+<!-- jQuery文件，务必在bootstrap.min.js 之前引入 -->
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js" type="text/javascript"></script>
+
+<div id="div1">
+    <p>123456</p>
+    <i>1</i>
+    <i>2</i>
+    <i>3</i>
+    <i>4</i>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var arr = [ "one", "two", "three", "four"];
+        var i=$("div > i");
+        $.each(i,function(){
+            alert(this);
+        });
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>from表单操作</title>
+
+    <!--1. css文件的引用-->
+    <link rel="stylesheet" type="text/css" href="../css/index.css" />
+    <!--2. 插件js文件的引用-->
+    <script type="text/javascript" src="../plug/jquery-3.3.1.js"></script>
+</head>
+<body>
+<!--添加滚动文字效果-->
+<marquee direction="right" behavior="alternate" scrollamount="10" scrolldelay="3" vspace="50px">
+    <strong><em>欢迎来到专业认证系统</em></strong></marquee>
+<!--为网页增添背景音乐-->
+
+<div align="center" class="div_global">
+    <form action="mailto:2576363815@qq.com" name="register" method="post" enctype="text/plain" target="_self">
+        <strong>选择大学：</strong>
+        <br/>
+        <input type="checkbox" name="school" value="beijing" /> <span>北京大学</span><br/>
+        <input type="checkbox" name="school" value="tianjin" checked="checked" /> <span>清华大学</span><br/>
+        <br/>
+        <strong>选择专业：</strong>
+        <br/>
+        <input type="radio" name="course" value="0"/>计算机科学与技术<br/>
+        <input type="radio" name="course" value="1"/>软件工程<br />
+        <input type="radio" name="course" value="2"/>网络工程<br />
+        <br/>
+        <strong>选择年级： </strong>
+        <select style="width: 100px">
+            <option value="1">大一</option>
+            <option value="2">大二</option>
+            <option value="3">大三</option>
+            <option value="4">大四</option>
+        </select>
+        <br/>
+        <strong>选择性别：</strong>
+        <input id="r1" type="radio" value="0" name="gender">男</input>
+        <input id="r2" type="radio" value="1" name="gender">女</input>
+        <br/><br/>
+
+        <strong>用户名：</strong>
+        <input type="text"  name="username" size="20" value=""/><br/>
+        <strong>密码   ：</strong>&nbsp;&nbsp;
+        <input type="password"  size="20" maxlength="20"/><br/>
+        <br/><br/>
+        记住密码 <input type="radio" name="remember"/>
+        <input type="reset" value="重置"/>
+        <input type="submit" value="登录" /><br/>
+
+        <button id="but1">获取</button>
+    </form>
+</div>
+
+<div class="div_global">
+    <strong>HTML元素获取：</strong><br/>
+    <textarea rows="6" cols="100">
+    在w3school，你可以找到你所需要的所有的网站建设教程。
+    </textarea>
+</div>
+
+<!-- 3. html 页面元素操作js引用-->
+<script type="text/javascript" src="../scripts/form.js"></script>
+
+</body>
+</html>

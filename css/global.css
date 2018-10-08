@@ -1,0 +1,43 @@
+/**
+ =============================
+ 全局的css样式
+ =============================
+ */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    width: 400px;
+    height: auto;
+    border: 1px solid #17a2b8;
+    margin: 50px auto;
+    line-height: 40px;
+    text-align: left;
+    font-size: 18px;
+    padding: 10px;
+}
+
+span {
+    color: red;
+    font-size: 20px;
+    margin: 8px;
+    border:1px solid #17a2b8;
+}
+
+
+input{
+    width: 200px;
+    height: 25px;
+    size: 25px;
+}
+
+
+button{
+    width: 80px;
+    height: 30px;
+    color: #0b0502;
+    background: #5bc0de;
+}

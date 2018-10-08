@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jstree</title>
+</head>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jstree/3.3.3/themes/default/style.min.css"/>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jstree/3.3.3/jstree.min.js"></script>
+
+<body>
+<button>取消选中</button>
+<div id="container"></div>
+
+<script>
+    $(function() {
+        $('#container').jstree({
+            'core' : {
+                multiple : false,//"multiple" : false, // 单选
+                data : [
+                    {"id" : 1, "text" : "浙江"},
+                    {"id" : 2, "text" : "北京"},
+                    {"id" : 3, "text" : "上海"},
+                    {"id" : 4, "text" : "天津"},
+                    {"id" : 5, "text" : "贵州"}
+                ]
+            },
+            plugins : [ "search", "types", "checkbox"], // 激活‘state’插件
+            checkbox: {
+                "keep_selected_style": false,//是否默认选中
+                "three_state": true,//父子级别级联选择
+                "tie_selection": false,
+                "whole_node" : false
+            }
+        });
+
+        $('button').on("click", function () {
+            //var ref = $("#container").jstree(true);//这句话很重要
+            //ref.deselect_all();
+
+            //var instance = $('#container').jstree(true);
+            //instance.deselect_all();
+            //instance.select_node('1');
+            //var ref = $('#container').jstree(true);
+            //ref.select_all();
+            //ref.refresh();
+            //console.log(ref);
+            $('#container').jstree(true).refresh();
+        });
+
+        $('#container').on("ready.jstree", function (e, data) {
+            $("#container").jstree("select_all",true);
+            //console.log(data.instance.get_selected(true)[0].text);
+            //console.log(data.instance.get_node(data.selected[0]).text);
+            //var ref = $('#container').jstree(true);
+            //var sel = ref.get_selected();
+            //ref.select_all();
+            //ref.refresh();
+            //console.log(sel);
+        });
+    });
+</script>
+</body>
+</html>

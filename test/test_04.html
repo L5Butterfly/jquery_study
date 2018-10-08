@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态添加html元素</title>
+
+    <style type="text/css">
+        .hide {
+            /*display: none!important;*/
+            display: none;
+        }
+
+        .pop-project{
+            margin: 40px;
+        }
+
+        .price-form{
+            border: 2px solid #c69500;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            float: left
+        }
+
+        .del-price-icon{
+            text-align: center;
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            z-index: 999;
+        }
+
+        .price-text{
+            font-size: 12px;
+            font-weight: bold;
+            padding: 3px 2px;
+        }
+        .price-input{
+            padding: 4px 0;
+        }
+
+        .content-cfg{
+            overflow: auto;
+            margin-right: 100px;
+            border: 1px solid #1998ff;
+            border-radius: 10px;
+            padding: 20px 10px;
+            margin-bottom: 15px;
+        }
+
+
+        .template{
+            border: 1px solid blue;
+        }
+
+    </style>
+
+
+    <!--1. 样式文件的引用-->
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
+
+    <!--1. 插件js文件的引用-->
+    <script type="text/javascript" src="../plug/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="../scripts/comm.js"></script>
+    <script type="text/javascript" src="../plug/bootstrap.js"></script>
+
+</head>
+
+
+<body>
+<span class="hide author">王超</span>
+<div class="pop-project col-lg-12 col-md-12 col-xs-12">
+    <div class="content-cfg price-content-cfg">
+        <div class="col-lg-12" style="margin-top: -10px; margin-bottom: 10px;">
+            <button type="button" class="btn btn-primary add-price-btn">添加</button>
+            <button type="button" class="btn btn-primary del-all-btn">清除</button>
+        </div>
+    </div>
+
+    <div style="float: right;margin-right: 200px;">
+        <button type="button" class="btn btn-default save-price-btn">保存</button>
+        <button type="button" class="btn btn-default cancle-all-btn">取消</button>
+        <button type="button" class="btn btn-default banid-price-btn">绑定</button>
+    </div>
+</div>
+
+<div style="clear: both;"></div>
+
+<div class="template hide">
+    <form class="price-form col-lg-4 col-md-4 col-sm-6">
+        <div class="del-price-icon">X</div>
+        <div class="col-lg-12 col-md-12 col-xs-12">
+            <input type="hidden" name="id" />
+            <div class="row price-li">
+                <div class="price-text col-lg-3">名称</div>
+                <div class="col-lg-7 price-input">
+                    <input type="text" name="priceName"/>
+                </div>
+            </div>
+            <div class="row  price-li">
+                <div class="price-text col-lg-3">编码</div>
+                <div class="col-lg-7 price-input">
+                    <input type="text" name="priceCode"/>
+                </div>
+            </div>
+            <div class="row  price-li">
+                <div class="price-text col-lg-3">价格(元)</div>
+                <div class="col-lg-7 price-input">
+                    <input type="text" name="price"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<!--<div id="tip">
+    <div style="width: 100px;height: 100px;border: 1px solid #17a2b8;background: #c69500;float: left">123</div>
+</div>
+<div id="tip">
+    <div style="width: 100px;height: 100px;border: 1px solid #17a2b8;background: #c69500;float: left">123</div>
+</div>-->
+
+
+<script>
+    $(document).ready(function () {
+
+        //获取body内容,JQ对象
+        $page=$("body");
+
+        //添加计费点信息
+        $page.on('click', '.add-price-btn', function(){
+            var $form = $($page.find('.template').html());
+            console.log($form);
+            $page.find('.price-content-cfg').append($form);
+        });
+
+        //请求单个计费点信息
+        $page.on('click', '.del-price-icon', function(){
+            $(this).parent().remove();
+        });
+
+        //清除所有计费点信息
+        $page.on('click', '.del-all-btn', function(){
+            //$(this).parent().remove();
+            $page.find('.content-cfg  .price-form').remove();
+        });
+
+        //保存点击事情
+        $page.on('click', '.save-price-btn', function(){
+            get_all_price();
+            alert("保存成功");
+        });
+
+        //取消点击事情
+        $page.on('click', '.cancle-all-btn', function(){
+            $page.find('.content-cfg  .price-form').remove();
+            alert("取消成功");
+        });
+
+
+        // 表单绑定
+        $page.on('click', '.banid-price-btn', function(){
+            // 后台数据
+            var data=[
+                {id: "1", priceName: "10元", priceCode: "1000", price: 1000},{id: "2", priceName: "15元", priceCode: "1500", price: 1500},
+                {id: "3", priceName: "20元", priceCode: "2000", price: 2000}, {id: "4", priceName: "25元", priceCode: "2500", price: 2500},
+                {id: "5", priceName: "30元", priceCode: "3000", price: 3000},{id: "6", priceName: "35元", priceCode: "3500", price: 3500}];
+
+            //清楚、移除之前的绑定
+            $page.find('.content-cfg  .price-form').remove();
+
+            //循环绑定每个表单上
+            for(var i in data){
+                var $form = $($page.find('.template').html());
+                $form.frmDeSerialize(data[i]);
+                $form.find('input[name="price"]').val(data[i].price/100);
+                $page.find('.price-content-cfg').append($form);
+            }
+        });
+
+        /* 获取表单数据 */
+        function get_all_price() {
+            var dataArr = [], formArr = [],priceNames =[];
+            $page.find('.price-content-cfg').find('.price-form').each(function(){
+                var data = $(this).serializeObject();
+                data.price = data.price*100;
+                dataArr.push(data);
+                priceNames.push(data.priceName);
+                var dataArray=$(this).serializeArray();
+                formArr.push(dataArray);
+            });
+            console.log(dataArr);
+            console.log(priceNames);
+            console.log(formArr);
+        }
+
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jquery练习</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+   <!-- <script type="text/javascript" src="js/jquery-3.0.0.js"></script>-->
+    <script type="text/javascript" src="../plug/jquery-3.3.1.js"></script>
+    <!--js 脚本-->
+    <script type="text/javascript">
+
+        //根据输入的名称，点击删除按钮后，存在则提示对应的值，然后删除，不存在提示不存在，如果对象里面已经没有值了，提示，已经没有数据了;
+        // $(document).ready(function(){};  作用：HTML所有dom元素加载完成时执行js脚本
+        $(document).ready(function(){
+            var obj={'a': '12', 'b':'13','c':'15'};
+
+            $("#but1").click(function () {
+                var pv=$("input[type='text']").val();
+                console.log(pv);
+                if(pv){
+                    console.log("存在："+pv);
+                    $("input[type='text']").val("");
+                }else{
+                    alert("不存在："+pv);
+                }
+
+                //判断对象obj是否空对象
+                obj={};
+                //delete obj;
+                var b = function() {
+                    if(!$.isEmptyObject(obj)){
+                        for(var key in obj) {
+                            console.log("key："+key);
+                            if(key){
+                                console.log("对象存在，对应值为："+JSON.stringify(obj));
+                                return true;
+                            }else{
+                                console.log("已经没有数据了："+JSON.stringify(obj));
+                                return false;
+                            }
+                        }
+                    }else{
+                        console.log("obj is null："+JSON.stringify(obj));
+                        return false;
+                    }
+                };
+                // 执行函数
+                b();
+            });
+
+            //js实现input的赋值
+            $("#ok").click(function () {
+                $('#username').val('王超');
+                document.getElementById('username').value='值1';
+                document.getElementById('username').innerText = '值4';
+            });
+
+        });
+    </script>
+
+</head>
+
+<body>
+<div class="header">
+    <input type="text" name="name" />
+    <input type="button" value="删除" id="but1"/>
+    <input  id="username"  name="username" type="text" placeholder="请输入用户名" />
+    <button id="ok">确认</button>
+</div>
+</body>
+</html>

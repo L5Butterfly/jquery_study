@@ -1,0 +1,35 @@
+
+/**
+      局部样式文件存放
+ */
+.demo {
+    width: 400px;
+    height: auto;
+    border: 1px solid #17a2b8;
+    margin: 50px auto;
+    line-height: 40px;
+    text-align: center;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.test {
+    color: red;
+    font-size: 20px;
+}
+
+
+.div_global {
+    width: 60%;
+    height: auto;
+    border: 1px solid #17a2b8;
+    margin: 50px auto;
+    line-height: 30px;
+    text-align: left;
+    font-size: 18px;
+    padding: 10px;
+    margin-top: 30px;
+    margin-left:260px;
+    margin-bottom: 150px;
+}
+

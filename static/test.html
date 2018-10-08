@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bootstrap-multiselect</title>
+   <!-- <meta http-equiv="content-type" content="text/html; charset=UTF-8" />-->
+
+    <link rel="stylesheet" href="../docs/css/bootstrap-3.3.2.min.css" type="text/css">
+    <!--<link rel="stylesheet" href="../docs/css/bootstrap-example.min.css" type="text/css">-->
+   <!-- <link rel="stylesheet" href="../docs/css/prettify.min.css" type="text/css">-->
+
+    <script type="text/javascript" src="../docs/js/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="../docs/js/bootstrap-3.3.2.min.js"></script>
+    <!--<script type="text/javascript" src="../docs/js/prettify.min.js"></script>-->
+
+    <link rel="stylesheet" href="../docs/css/bootstrap-multiselect.css" type="text/css">
+    <script type="text/javascript" src="../docs/js/bootstrap-multiselect.js"></script>
+
+</head>
+<body>
+
+
+<h3>Call the Plugin</h3><br/>
+<div class="example">
+    <select id="example-getting-started" multiple="multiple">
+        <option value="cheese">Cheese</option>
+        <option value="tomatoes">Tomatoes</option>
+        <option value="Mozzarella">Mozzarella</option>
+        <option value="Mushrooms">Mushrooms</option>
+        <option value="Pepperoni">Pepperoni</option>
+        <option value="Onions">Onions</option>
+    </select>
+</div>
+
+
+<h3>Call the Plugin</h3><br/>
+<div class="highlight">
+    <select id="example-getting-started2" multiple="multiple">
+        <option value="0">Cheese</option>
+        <option value="1">Tomatoes</option>
+        <option value="2">Mozzarella</option>
+        <option value="3">Mushrooms</option>
+        <option value="4">Pepperoni</option>
+        <option value="5">Onions</option>
+    </select>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example-getting-started').multiselect();
+        $('#example-getting-started2').multiselect();
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery样式添加和移除</title>
+
+    <style>
+
+        .hide {
+            /*display: none!important;*/
+            display: none;
+        }
+
+        .btn{
+            width: 100px;
+            height: 30px;
+            color: #0b0502;
+            background: #5bc0de;
+        }
+
+        .divs {
+            width: 800px;
+            height: 300px;
+            border: 1px solid #17a2b8;
+            margin: 50px auto;
+            line-height: 40px;
+            text-align: left;
+            font-size: 18px;
+            padding: 10px;
+        }
+
+    </style>
+
+    <script type="text/javascript" src="../plug/jquery-3.3.1.js"></script>
+
+</head>
+
+<body>
+
+
+<button id="company" class="btn">公司信息</button><br/>
+<button id="channel" class="btn">通道信息</button><br/>
+<button id="product" class="btn">产品信息</button><br/>
+
+
+
+<div>
+    <div class="divs" id="company_from">
+        <p>合作公司：通道方的公司</p>
+    </div>
+    <div class="divs hide" id="channel_from">
+        <p>通道信息：通道类型名称介绍</p>
+    </div>
+    <div class="divs hide" id="product_from">
+        <p>产品信息：产品的详细信息</p>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $("#company").click(function () {
+            $("#company_from").removeClass("hide");
+            $("#channel_from").addClass("hide");
+            $("#product_from").addClass("hide");
+        });
+
+        $("#channel").click(function () {
+            $("#channel_from").removeClass("hide");
+            $("#company_from").addClass("hide");
+            $("#product_from").addClass("hide");
+        });
+
+        $("#product").click(function () {
+            $("#product_from").removeClass("hide");
+            $("#company_from").addClass("hide");
+            $("#channel_from").addClass("hide");
+        });
+    });
+
+</script>
+</body>
+</html>
